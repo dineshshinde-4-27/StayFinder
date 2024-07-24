@@ -1,0 +1,110 @@
+<% layout('/layouts/commanPage.ejs') %>
+
+<div class="container d-flex flex-column">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form
+        method="POST"
+        action="/listings"
+        class="new-form needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label my-4">Title </label>
+
+          <input
+            type="text"
+            name="Listing[title]"
+            placeholder=" Enter Title of product"
+            required
+            class="form-control"
+            id="title"
+          />
+          <div class="valid-feedback">Good</div>
+          <div class="invalid-feedback">Enter Valid Title</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="textarea" class="form-label"> Descripiotn </label>
+
+          <textarea
+            name="Listing[description]"
+            id="des"
+            placeholder="Give brief info about product"
+            cols="20"
+            id="textarea"
+            rows="5"
+            class="form-control"
+          ></textarea>
+          <div class="valid-feedback">Field Completed</div>
+          <div class="invalid-feedback">Enter Valid Description</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="img" class="form-label">Upload Image </label>
+
+          <input
+            type="file"
+            name="Listing[imgUrl]"
+            class="form-control"
+            placeholder=" Enter img url of product"
+            id="img"
+          />
+          <div class="valid-feedback">Field Completed</div>
+          <div class="invalid-feedback">Enter Valid Url Link</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label"> Price</label>
+
+            <input
+              type="text"
+              name="Listing[price]"
+              class="form-control"
+              placeholder=" Enter Price of product"
+              id="price"
+              required
+            />
+            <div class="valid-feedback">Field Completed</div>
+            <div class="invalid-feedback">This field is must</div>
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="location" class="form-label"> Location </label>
+
+            <input
+              id="location"
+              type="text"
+              name="Listing[location]"
+              placeholder="Address "
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Field Completed</div>
+            <div class="invalid-feedback">Enter Valid location</div>
+          </div>
+        </div>
+
+        <div class="mb3">
+          <label for="country" class="form-label"> Country </label>
+
+          <input
+            type="text"
+            name="Listing[country]"
+            placeholder="Country"
+            class="form-control"
+            id="country"
+          />
+          <div class="valid-feedback">Field Completed</div>
+          <div class="invalid-feedback">Enter Valid Country</div>
+        </div>
+
+        <button
+          class="btn my-4 py-2 px-3 add-btn d-block mx-auto w-25 text-center"
+        >
+          Add
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

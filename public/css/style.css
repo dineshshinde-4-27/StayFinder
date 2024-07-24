@@ -1,0 +1,346 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-optical-sizing: auto !important;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fff7f7;
+  -webkit-user-select: none; /* Safari */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+}
+.navbar {
+  height: 5rem;
+}
+.fa-compass {
+  color: #de0000;
+  display: block;
+  font-size: 3rem;
+}
+
+.nav-link {
+  color: black;
+  font-weight: bold;
+  margin: 3px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease-out;
+}
+.nav-link:hover {
+  border-bottom: 2px solid rgb(141, 27, 27);
+}
+.card-img-top {
+  width: 100%;
+  object-fit: cover !important;
+}
+
+/*  index.ejs */
+ul .listItem {
+  text-decoration: none;
+}
+
+/* Styling Card */
+.card-img-overlay {
+  opacity: 0;
+  transition: all 0.2s ease-out;
+}
+.card-img-overlay:hover {
+  opacity: 0.3;
+  background-color: white;
+}
+.add-btn {
+  background-color: #de0000;
+  color: white !important;
+  border: none !important;
+}
+.add-btn:hover {
+  background-color: #de9b00 !important;
+  border: none !important;
+}
+/* Show card */
+.show-card {
+  width: 70%;
+  margin: auto;
+  gap: 10px;
+  padding: 10px 5px;
+  border: none;
+  min-height: 87vh;
+}
+.show-card-body {
+  border: none;
+  padding: 0;
+}
+.show-card h2 {
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  transition: all 0.2s ease-out;
+  border: 0.6px solid red;
+}
+.show-card h2:hover {
+  background-color: white !important;
+  color: #dc3545 !important;
+  border: 0.6px solid #dc3545;
+}
+.show-card-img-body {
+  background-color: #eae3d7;
+  border-radius: 12px;
+  width: 100%;
+  overflow: hidden;
+}
+.show-card .show-card-body {
+  background-color: #e4e4e4;
+  padding: 8px 4px;
+  border-radius: 10px;
+}
+.show-img {
+  height: 40vh;
+  object-fit: contain !important;
+  border-radius: 20px;
+}
+.show-card-body p {
+  padding: 0;
+
+  margin: 0;
+  margin-bottom: 3px;
+}
+.show-card-body p > b {
+  font-size: 24px;
+}
+
+/* styling Footer  */
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid gray !important;
+  background-color: #f7f7f7;
+  gap: 12px;
+}
+.footer.f-info a {
+  text-decoration: none;
+}
+.footer .f-info a i {
+  color: black;
+  margin-right: 5px;
+}
+.footer .f-links a {
+  text-decoration: none;
+}
+.footer .f-links a:hover {
+  text-decoration: underline;
+}
+
+.error-bg {
+  width: 80% !important;
+  margin: auto;
+  height: 74vh;
+  gap: 1rem;
+  flex-direction: column;
+  background-color: rgba(8, 8, 8, 0.829);
+  padding: 10px;
+  overflow: auto;
+  border-radius: 12px;
+}
+
+.error-bg h2 {
+  color: red;
+  text-wrap: wrap;
+  padding: 12px;
+  text-align: center;
+}
+.error-bg .status-code {
+  color: yellow;
+}
+* ::-webkit-scrollbar {
+  display: none;
+}
+
+/*  review  */
+.review-box {
+  /* background-color: white; */
+  padding: 15px;
+  margin: 12px 6px;
+  border: 1px solid gray;
+  border-radius: 12px;
+}
+.review-box form {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3rem;
+}
+.review-box form label {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.review-box form textarea {
+  padding: 7px;
+}
+.review-box form textarea::placeholder {
+  padding: 7px;
+  text-align: center;
+}
+
+/*Review Card*/
+
+.my-card-box {
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.my-card-box .card {
+  width: 49%;
+  height: 250px;
+  position: relative;
+  transition: all 0.2s ease-in;
+}
+.my-card-box .card .r-card-body .r-comment {
+  width: 75%;
+  height: 100px;
+  font-size: 14px;
+  overflow: auto;
+}
+.my-card-box .card:hover .r-comment {
+  color: yellow;
+}
+.my-card-box .r-star {
+  color: #eaac00;
+  font-size: 20px;
+}
+
+.r-rating {
+  opacity: 0;
+  transition: all 0.5s ease-in;
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+
+.my-card-box .card:hover {
+  background: rgb(39, 14, 14);
+  color: white;
+}
+.card:hover .r-rating {
+  opacity: 1;
+  right: 2%;
+  top: 10px;
+  color: white;
+}
+.r-card-body {
+  height: 100%;
+  text-align: justify;
+}
+
+/* review - delete button */
+.r-delete-form button i {
+  opacity: 0;
+  transition: all 0.5s ease-in;
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+}
+.date-time {
+  opacity: 0;
+  transition: all 0.5s ease-in;
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  font-size: 0.75rem;
+}
+
+.card:hover .r-delete-form button i {
+  opacity: 1;
+  right: 2%;
+  bottom: 10px;
+  color: white;
+}
+.card:hover .r-delete-form button i,
+.card:hover .date-time {
+  opacity: 1;
+  right: 2%;
+  bottom: 4px;
+  color: white;
+}
+/* flash message  */
+.pop-msg {
+  position: relative;
+  top: -100px;
+  animation: popAnimation 0.5s forwards;
+}
+
+@keyframes popAnimation {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 2px;
+  }
+}
+
+/*  signup form */
+.signup-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 6px;
+}
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 0.75rem;
+  border: 2px solid rgba(201, 180, 180, 0.303);
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #fff7d8;
+}
+.signup-form input {
+  border-radius: 12px;
+  padding: 8px;
+  /* border: none; */
+  color: black;
+  box-shadow: 2px 2px 2px black;
+}
+
+.signup-form label {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* edit.ejs */
+.current-img {
+  border: 2px solid #757374;
+  display: flex;
+  justify-content: center;
+  background-color: #dfd6d6;
+  border-radius: 20px;
+  overflow: hidden;
+  max-height: 250px;
+}
+.current-img img {
+  margin: 2px;
+  border-radius: 20px;
+  object-fit: cover;
+  width: 500px;
+}
+
+.filter-box .filters .filter {
+  opacity: 0.4;
+  transition: all 0.5s ease-out;
+}
+.filter-box .filters .filter:hover {
+  opacity: 1;
+}
+
+/*  gst */
+
+.gst {
+  display: none;
+}

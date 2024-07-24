@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass" title=" WanderLust"></i>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings" alert-info>See Hotel</a>
+        <a class="nav-link create-form" href="/listings/new">Add Your Hotel</a>
+      </div>
+      <form class="d-flex m-auto" role="search">
+        <input
+          class="form-control me-2 rounded-5"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-danger rounded-5" type="submit">
+          Search
+        </button>
+      </form>
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser){ %>
+        <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
+        <a class="nav-link" href="/login" alert-info>Log In</a>
+        <% } %> <% if (currentUser){ %>
+        <span class="nav-link create-form" href=""
+          ><%= currentUser.email %></span
+        >
+        <a class="nav-link create-form" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+<% if(message.length>0){ %>
+<div
+  class="alert pop-msg alert-success text-center alert-dismissible fade show"
+  role="alert"
+>
+  <%= message %>
+
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if(delItem.length>0){ %>
+<div
+  class="alert pop-msg alert-danger text-center alert-dismissible fade show"
+  role="alert"
+>
+  <%= delItem %>
+
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if(errorMsg.length>0){ %>
+<div
+  class="alert pop-msg alert-danger text-center alert-dismissible fade show"
+  role="alert"
+>
+  <%= errorMsg %>
+
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if(updateItem.length>0){ %>
+<div
+  class="alert pop-msg alert-info text-center alert-dismissible fade show"
+  role="alert"
+>
+  <%= updateItem %>
+
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>

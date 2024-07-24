@@ -1,0 +1,50 @@
+<% layout("layouts/commanPage") %>
+<div class="signup-form-box gap-4">
+  <h2>Create account on Wonderlust</h2>
+  <form
+    method="POST"
+    action="/signup"
+    class="signup-form needs-validation"
+    novalidate
+  >
+    <div class="mb-3">
+      <label for="user" class="form-label"> User Name </label>
+      <input
+        type="text"
+        required
+        id="user"
+        name="username"
+        class="form-control"
+      />
+      <div class="valid-feedback">Field Completed</div>
+      <div class="invalid-feedback">plese enter user name</div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label"> Email </label>
+      <input
+        type="email"
+        required
+        id="email"
+        name="email"
+        class="form-control"
+      />
+      <div class="valid-feedback">Field Completed</div>
+      <div class="invalid-feedback">please enter email</div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label"> Password </label>
+      <input
+        type="password"
+        required
+        id="password"
+        name="password"
+        class="form-control"
+      />
+      <div class="valid-feedback">Field Completed</div>
+      <div class="invalid-feedback">please enter password</div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-danger">SignUp</button>
+  </form>
+  <a href="/login" class="btn btn-primary">Already have account</a>
+</div>

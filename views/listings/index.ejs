@@ -1,0 +1,92 @@
+<% layout('/layouts/commanPage.ejs') %>
+<div class="d-flex flex-wrap m-auto py-3 gap-5 justify-content-evenly">
+  <div
+    class="filter-box justify-content-around p-3 align-items-center rounded-5 d-none d-xl-flex gap-5 bg-white"
+  >
+    <div class="filters d-flex justify-content-center gap-5 align-items-center">
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-water-ladder"></i>
+        <p>Swiming Pools</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-mountain-city"></i>
+        <p>At Hill</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-bed"></i>
+        <p>Less Expencive</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-umbrella-beach"></i>
+        <p>Near Beach</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-tower-observation"></i>
+        <p>Towns</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-tree"></i>
+        <p>Nature</p>
+      </div>
+      <div class="filter text-center">
+        <i class="fa-solid fs-3 fa-gopuram"></i>
+        <p>Near Temple</p>
+      </div>
+    </div>
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label fw-bold" for="flexSwitchCheckDefault"
+        >Show Price with GST</label
+      >
+    </div>
+  </div>
+
+  <% for (let list of allListing){ %>
+  <a
+    href="/listings/<%= list._id %>/show"
+    class="text-decoration-none"
+    target="_blank"
+  >
+    <div class="mx-2 card border-2 bg-gradient" style="width: 18rem">
+      <img
+        src="<%= list.imgUrl.url %>"
+        class="m-2 rounded-5 object-fit-cover"
+        alt="list-img"
+        title="<%= list.title %>"
+        style="height: 20rem"
+      />
+      <div class="card-img-overlay"><%= list.country %></div>
+      <div class="card-body py-2 px-0 m-0">
+        <h5 class="px-2 card-text title fw-bolder fs-6"><%= list.title %></h5>
+        <p class="px-2 card-text price fw-bold fs">
+          &#8377;<%= list.price.toLocaleString("en-IN") %>
+          <span class="gst"> + 18% GST</span>
+        </p>
+      </div>
+    </div>
+  </a>
+  <% }%>
+</div>
+
+<script>
+  let priceToggle = document.getElementById("flexSwitchCheckDefault");
+
+  priceToggle.addEventListener("click", () => {
+    let gstCollection = document.getElementsByClassName("gst");
+    console.log(gstCollection);
+    for (let gst of gstCollection) {
+      if (gst.style.display !== "inline") {
+        gst.style.display = "inline";
+      } else {
+        gst.style.display = "none";
+      }
+    }
+
+    console.log("Element is Clicked");
+  });
+</script>
