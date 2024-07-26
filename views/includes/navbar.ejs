@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md bg-white border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings">
-      <i class="fa-regular fa-compass" title=" WanderLust"></i>
+      <i class="fa-regular fa-compass" title="StayFinder"></i>
     </a>
     <button
       class="navbar-toggler"
@@ -16,8 +16,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/listings" alert-info>See Hotel</a>
-        <a class="nav-link create-form" href="/listings/new">Add Your Hotel</a>
+        <a class="nav-link" href="/listings" title="You can see all hotels here"
+          >See Hotel</a
+        >
+        <a
+          class="nav-link create-form"
+          href="/listings/new"
+          title="You can add you hotel here"
+          >Add Your Hotel</a
+        >
       </div>
       <form class="d-flex m-auto" role="search">
         <input
@@ -32,8 +39,20 @@
       </form>
       <div class="navbar-nav ms-auto">
         <% if (!currentUser){ %>
-        <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
-        <a class="nav-link" href="/login" alert-info>Log In</a>
+        <a
+          class="nav-link"
+          aria-current="page"
+          href="/signup"
+          title="If you don't have an account yet"
+          >Sign Up</a
+        >
+        <a
+          class="nav-link"
+          href="/login"
+          alert-info
+          title="If you have an account"
+          >Log In</a
+        >
         <% } %> <% if (currentUser){ %>
         <span class="nav-link create-form" href=""
           ><%= currentUser.email %></span
