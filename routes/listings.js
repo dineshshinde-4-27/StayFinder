@@ -7,6 +7,7 @@ const { schemaValidation } = require("../middleware.js");
 const listingsController = require("../controllers/listings.js");
 const multer = require("multer");
 const { storage } = require("../CloudConfig.js");
+const Listing = require("../models/listing.js");
 const upload = multer({ storage });
 
 // Schema validation function
@@ -56,5 +57,6 @@ router
     isOwner,
     handleAsyncErr(listingsController.deleteIndividualListing)
   );
+//  Request for search by country
 
 module.exports = router;

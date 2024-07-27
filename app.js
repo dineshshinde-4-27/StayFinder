@@ -7,7 +7,6 @@ const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError.js");
-const handleAsyncErr = require("./utils/handleAsyncErr.js");
 const listingsRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
 const userRouter = require("./routes/users.js");
@@ -22,9 +21,10 @@ const port = 3000;
 
 // Connect to MongoDB
 const dbUrl = process.env.ATLASDB_URL;
+const localDBUrl = "mongodb://localhost:27017/wanderlust";
 
 async function main(dbUrl) {
-  await mongoose.connect(dbUrl);
+  await mongoose.connect(localDBUrl);
 }
 
 main(dbUrl)
@@ -36,7 +36,7 @@ main(dbUrl)
   });
 // mongo store for session storage
 const store = mongoStore.create({
-  mongoUrl: dbUrl,
+  mongoUrl: localDBUrl,
   crypto: {
     secret: process.env.SECRET,
   },
@@ -55,7 +55,13 @@ const sessoinOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   },
 };
-
+app.use((req, res, next) => {
+  if (req.path === "/favicon.ico") {
+    res.status(204).end();
+  } else {
+    next();
+  }
+});
 app.use(expressSession(sessoinOptions));
 app.use(flash());
 
@@ -100,8 +106,9 @@ app.use("/", userRouter);
 // Error handler for page not found
 app.all("*", (req, res, next) => {
   // next(new ExpressError(404, "Page Not Found"));
-
-  req.flash("error", "Page Not found");
+  if (req.path !== "/") {
+    req.flash("error", "Page Not found");
+  }
   res.redirect("/listings");
 });
 

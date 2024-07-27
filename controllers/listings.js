@@ -3,15 +3,20 @@ const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 const { cloudinary } = require("../CloudConfig.js");
-
-module.exports.index = async (req, res) => {
-  const allListing = await Listing.find({});
-  res.render("listings/home.ejs", { allListing });
-};
+const { toCapitalize } = require("../utils/util.js");
+const { config } = require("dotenv");
 
 module.exports.allListing = async (req, res) => {
-  const allListing = await Listing.find({});
-  res.render("listings/index.ejs", { allListing });
+  let allListing = await Listing.find({});
+  let country = req.query.country;
+  if (country) {
+    country = toCapitalize(country);
+    const dataByCountry = await Listing.find({ country: country });
+    console.log(dataByCountry.length);
+
+    allListing = dataByCountry;
+  }
+  res.render("listings/index.ejs", { allListing, country });
 };
 
 module.exports.newListingForm = (req, res, next) => {
@@ -48,6 +53,7 @@ module.exports.newListingDataSaver = async (req, res) => {
   listing.owner = req.user._id;
   listing.imgUrl = { url, filename };
   listing.geometry = response.body.features[0].geometry;
+  listing.country = toCapitalize(listing.country);
   await listing.save();
 
   req.flash("success", "New Listing Created");
@@ -81,6 +87,7 @@ module.exports.individualUpdateSaver = async (req, res) => {
     .send();
   const { id } = req.params;
   const updated = req.body.Listing;
+  updated.country = toCapitalize(updated.country);
 
   const listing = await Listing.findByIdAndUpdate(id, updated, {
     runValidators: true,

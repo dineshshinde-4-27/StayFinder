@@ -26,12 +26,13 @@
           >Add Your Hotel</a
         >
       </div>
-      <form class="d-flex m-auto" role="search">
+      <form method="GET" action="/listings" class="d-flex m-auto" role="search">
         <input
           class="form-control me-2 rounded-5"
           type="search"
           placeholder="Search"
           aria-label="Search"
+          name="country"
         />
         <button class="btn btn-outline-danger rounded-5" type="submit">
           Search

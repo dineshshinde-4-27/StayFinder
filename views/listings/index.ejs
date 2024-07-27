@@ -45,8 +45,18 @@
       >
     </div>
   </div>
+  <% if (allListing.length ==0) { %>
+  <div
+    class="empt-box d-flex justify-content-center align-items-center bg-warning w-100 rounded-4"
+  >
+    <h3 class="m-0 p-4 text-center">
+      Sorry, we don't have hotel data available for
+      <span class="text-danger">" <%= country %>"</span> at the moment. Please
+      try selecting another country or check back later.
+    </h3>
+  </div>
 
-  <% for (let list of allListing){ %>
+  <%} %> <% for (let list of allListing){ %>
   <a
     href="/listings/<%= list._id %>/show"
     class="text-decoration-none"
