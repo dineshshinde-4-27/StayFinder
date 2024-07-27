@@ -21,10 +21,9 @@ const port = 3000;
 
 // Connect to MongoDB
 const dbUrl = process.env.ATLASDB_URL;
-const localDBUrl = "mongodb://localhost:27017/wanderlust";
 
 async function main(dbUrl) {
-  await mongoose.connect(localDBUrl);
+  await mongoose.connect(dbUrl);
 }
 
 main(dbUrl)
@@ -36,7 +35,7 @@ main(dbUrl)
   });
 // mongo store for session storage
 const store = mongoStore.create({
-  mongoUrl: localDBUrl,
+  mongoUrl: dbUrl,
   crypto: {
     secret: process.env.SECRET,
   },

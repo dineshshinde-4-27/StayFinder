@@ -12,8 +12,6 @@ module.exports.allListing = async (req, res) => {
   if (country) {
     country = toCapitalize(country);
     const dataByCountry = await Listing.find({ country: country });
-    console.log(dataByCountry.length);
-
     allListing = dataByCountry;
   }
   res.render("listings/index.ejs", { allListing, country });
@@ -32,7 +30,7 @@ module.exports.showIndividualListing = async (req, res) => {
   if (!chat) {
     // throw new ExpressError(404, "Listing not found");
     req.flash("error", "Page doesn't exist...!");
-    res.redirect("/listings");
+    return res.redirect("/listings");
   }
   res.render("listings/show.ejs", { chat });
 };
