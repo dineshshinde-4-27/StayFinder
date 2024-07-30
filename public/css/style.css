@@ -11,6 +11,9 @@ body {
 .navbar {
   height: 5rem;
 }
+.navbar .img-logo {
+  width: 70px;
+}
 .fa-compass {
   color: #de0000;
   display: block;
