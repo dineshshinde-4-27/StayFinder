@@ -1,0 +1,108 @@
+<style>
+  * {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+  }
+  table {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  table caption {
+    text-align: center;
+    color: red;
+    text-transform: uppercase;
+    font-size: 2rem;
+    background-color: rgb(255, 222, 33);
+    border-radius: 12px;
+    padding-inline: 0.5rem 1rem;
+  }
+  .booking-table-heading th {
+    background-image: linear-gradient(red, black);
+    color: yellow;
+    text-transform: uppercase;
+    padding: 0.5rem;
+  }
+  .main-tr td {
+    background-color: rgb(41, 22, 43);
+    color: white;
+    padding: 0.5rem;
+    transition: all 0.2s;
+  }
+  .main-tr:hover.main-tr > td {
+    background-color: yellow;
+    color: red;
+  }
+  .booking-cancel-btn {
+    color: white;
+    background-color: red;
+    border-radius: 2px;
+    border: none;
+    padding: 0.72rem 1rem;
+    transition: all 0.3s;
+    width: 100%;
+  }
+  .booking-cancel-btn:active {
+    transform: scale(0.9);
+  }
+  .booking-error-box {
+    background-color: rgb(237, 233, 233);
+    width: 70%;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 20px;
+  }
+  .booking-error {
+    color: rgb(154, 10, 10);
+    text-align: center;
+    background-color: transparent;
+    font-size: 2.3rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    /* margin: 8rem auto; */
+  }
+  .main-tr .price {
+    color: yellow;
+  }
+</style>
+<% layout('/layouts/commanPage.ejs') %>
+
+<table class="booking-table">
+  <caption>
+    My Bookings
+  </caption>
+  <tr class="booking-table-heading">
+    <th>Hotel</th>
+    <th>Check-In</th>
+    <th>Check-Out</th>
+    <th>Guests</th>
+    <th>Total Price</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <% if (bookings.length>0) {%> <% bookings.forEach(booking => { %> <% if
+  (booking.status!=="cancelled"){ %>
+  <tr class="main-tr">
+    <td><%= booking.listing.title %></td>
+    <td><%= booking.checkIn.toDateString() %></td>
+    <td><%= booking.checkOut.toDateString() %></td>
+    <td><%= booking.guests %></td>
+    <td class="price">₹<%= booking.totalPrice %></td>
+    <td><%= booking.status %></td>
+    <td>
+      <% if (booking.status === 'pending' ) { %>
+      <form action="/bookings/<%= booking._id %>/cancel" method="POST">
+        <button type="submit" class="booking-cancel-btn">Cancel</button>
+      </form>
+      <% } %>
+    </td>
+  </tr>
+  <% } %> <% }); %> <% } %>
+</table>
+<% if (bookings.length==0) {%>
+
+<div class="booking-error-box">
+  <p class="booking-error">You Have Not Booked Any Hotel Yet</p>
+</div>
+<%}%>

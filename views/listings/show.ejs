@@ -131,9 +131,79 @@
     </div>
   </div>
   <% }%>
-  <div class="mb-3 w-100">
-    <h4 class="map-heading">Where you'll be</h4>
-    <div id="map"></div>
-  </div>
 </div>
+<style>
+  .booking-box {
+    display: flex;
+    flex-direction: column;
+    color: rebeccapurple;
+    border: 2px solid rgb(134, 133, 133);
+    border-radius: 10px;
+    padding: 2rem 0;
+    align-items: center;
+    background-color: rgb(43, 42, 42);
+    overflow: hidden;
+  }
+  .booking-field-name {
+    background-color: rgb(142, 123, 0);
+    padding: 0.8rem 1rem;
+    width: 100%;
+    text-align: center;
+    color: yellow;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bolder;
+
+    border: none;
+  }
+  .booking-field {
+    padding: 0.8rem 1rem;
+    width: 100%;
+    background-color: rgb(242, 255, 103);
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(139, 4, 4);
+    text-align: center;
+    border: none;
+    outline: none;
+  }
+  .booking-field:hover,
+  .booking-field-name:hover {
+    background-color: black;
+    color: yellow;
+  }
+</style>
+<% if(chat.owner.username !=currentUser.username){ %>
+
+<h2 class="text-white bg-danger rounded-5 py-1 text-center">Book This Hotel</h2>
+<form action="/bookings/<%= chat._id %>/book" method="POST" class="booking-box">
+  <label for="checkIn" class="booking-field-name">Check-In Date:</label>
+  <input
+    type="date"
+    name="checkIn"
+    id="checkIn"
+    required
+    autofocus
+    class="booking-field"
+  />
+
+  <label for="checkOut" class="booking-field-name">Check-Out Date:</label>
+  <input type="date" name="checkOut" required class="booking-field" />
+
+  <label for="guests" class="booking-field-name">Number of Guests:</label>
+  <input type="number" name="guests" min="1" required class="booking-field" />
+
+  <label for="totalPrice" class="booking-field-name">Total Price (₹):</label>
+  <input type="number" name="totalPrice" required class="booking-field" />
+
+  <button type="submit" class="booking-field-name">Book Now</button>
+</form>
+<hr />
+<% } %>
+<div class="mb-3 w-100">
+  <h4 class="map-heading">Where you'll be</h4>
+  <div id="map"></div>
+</div>
+
 <script src="../../public//js/map.js"></script>

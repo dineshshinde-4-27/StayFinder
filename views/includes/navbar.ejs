@@ -1,3 +1,10 @@
+<style>
+  .see-bookings {
+    background-color: #efefef;
+    border-radius: 20px;
+  }
+</style>
+
 <nav class="navbar navbar-expand-md bg-white border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings">
@@ -30,6 +37,12 @@
           href="/listings/new"
           title="You can add you hotel here"
           >Add Your Hotel</a
+        >
+        <a
+          class="nav-link create-form see-bookings"
+          href="/bookings"
+          title="You can add you hotel here"
+          >See Bookings</a
         >
       </div>
       <form method="GET" action="/listings" class="d-flex m-auto" role="search">

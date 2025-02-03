@@ -9,6 +9,8 @@ const methodOverride = require("method-override");
 const ExpressError = require("./utils/ExpressError.js");
 const listingsRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
+const bookingRoutes = require("./routes/booking");
+
 const userRouter = require("./routes/users.js");
 const expressSession = require("express-session");
 const mongoStore = require("connect-mongo");
@@ -98,6 +100,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
+app.use("/bookings", bookingRoutes);
 
 // Home page route
 // expres Sexsion
