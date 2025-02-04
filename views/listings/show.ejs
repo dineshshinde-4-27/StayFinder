@@ -174,8 +174,6 @@
     color: yellow;
   }
 </style>
-<% if(chat.owner.username !=currentUser.username){ %>
-
 <h2 class="text-white bg-danger rounded-5 py-1 text-center">Book This Hotel</h2>
 <form action="/bookings/<%= chat._id %>/book" method="POST" class="booking-box">
   <label for="checkIn" class="booking-field-name">Check-In Date:</label>
@@ -189,18 +187,50 @@
   />
 
   <label for="checkOut" class="booking-field-name">Check-Out Date:</label>
-  <input type="date" name="checkOut" required class="booking-field" />
+  <input
+    type="date"
+    name="checkOut"
+    id="checkOut"
+    required
+    class="booking-field"
+  />
 
   <label for="guests" class="booking-field-name">Number of Guests:</label>
-  <input type="number" name="guests" min="1" required class="booking-field" />
+  <input
+    type="number"
+    name="guests"
+    id="guests"
+    min="1"
+    required
+    class="booking-field"
+    oninput="calculatePrice()"
+  />
 
-  <label for="totalPrice" class="booking-field-name">Total Price (₹):</label>
-  <input type="number" name="totalPrice" required class="booking-field" />
+  <!-- Display Total Price -->
+  <p class="booking-field-name">
+    Total Price (₹): <span id="totalPrice">0</span>
+  </p>
+  <input type="hidden" name="totalPrice" id="totalPriceInput" />
 
   <button type="submit" class="booking-field-name">Book Now</button>
 </form>
-<hr />
-<% } %>
+
+<script>
+  function calculatePrice() {
+    const guests = document.getElementById("guests").value || 0;
+    const pricePerGuest = <%=chat.price%>; // Example: ₹500 per guest (You can fetch this dynamically)
+
+    const totalPrice = guests * pricePerGuest;
+
+
+    // Update the displayed price
+    document.getElementById("totalPrice").textContent = totalPrice;
+
+    // Update hidden input field to send data in the form submission
+    document.getElementById("totalPriceInput").value = totalPrice;
+  }
+</script>
+
 <div class="mb-3 w-100">
   <h4 class="map-heading">Where you'll be</h4>
   <div id="map"></div>
