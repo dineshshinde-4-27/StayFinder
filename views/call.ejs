@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StayFinder Video Call</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      h2 {
+        text-align: center;
+        padding: 10px;
+      }
+      #meet {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="background-color: rgb(255, 61, 61); color: white; padding: 2em">
+      StayFinder Video Room - <%= roomName %>
+    </h2>
+    <div id="meet"></div>
+
+    <script src="https://meet.jit.si/external_api.js"></script>
+    <script>
+      const domain = "meet.jit.si";
+      const options = {
+        roomName: "<%= roomName %>",
+        width: "100%",
+        height: 600,
+        parentNode: document.querySelector("#meet"),
+      };
+      const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
+  </body>
+</html>

@@ -34,6 +34,22 @@
       <button class="btn btn-danger">Delete</button>
     </form>
   </div>
+  <% } %> <% if (currentUser) { %>
+  <a
+    href="/call/StayFinderRoom<%= chat._id %>"
+    class="btn btn-primary mt-3 p-3 fw-bold"
+    style="width: fit-content; margin: auto"
+  >
+    <i class="fa-solid fa-phone px-3"></i> Begin your conference
+  </a>
+  <% } else { %>
+  <a
+    href="/login"
+    style="width: fit-content; margin: auto"
+    class="btn btn-warning mt-3 p-3 fw-bold"
+  >
+    <i class="fa-solid fa-user px-3"></i> To begin a conference, kindly sign in.
+  </a>
   <% } %>
 
   <hr class="m-3" />

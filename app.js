@@ -10,6 +10,7 @@ const ExpressError = require("./utils/ExpressError.js");
 const listingsRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
 const bookingRoutes = require("./routes/booking");
+const callRoutes = require("./routes/call");
 
 const userRouter = require("./routes/users.js");
 const expressSession = require("express-session");
@@ -106,6 +107,7 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 app.use("/bookings", bookingRoutes);
+app.use("/call", callRoutes);
 
 // Home page route
 // expres Sexsion
