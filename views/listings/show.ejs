@@ -152,30 +152,27 @@
   .booking-box {
     display: flex;
     flex-direction: column;
-    color: rebeccapurple;
-    border: 2px solid rgb(134, 133, 133);
     border-radius: 10px;
-    padding: 2rem 0;
+    padding: 2rem 0.82em;
     align-items: center;
-    background-color: rgb(43, 42, 42);
+    background-color: rgb(255, 255, 255);
     overflow: hidden;
+    box-shadow: 0px 3px 10px -5px black;
   }
   .booking-field-name {
-    background-color: rgb(142, 123, 0);
+    background-color: rgb(255, 255, 255);
     padding: 0.8rem 1rem;
     width: 100%;
     text-align: center;
-    color: yellow;
+    color: rgb(0, 0, 0);
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: bolder;
-
-    border: none;
   }
   .booking-field {
     padding: 0.8rem 1rem;
     width: 100%;
-    background-color: rgb(242, 255, 103);
+    background-color: rgb(255, 255, 255);
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -184,9 +181,43 @@
     border: none;
     outline: none;
   }
-  .booking-field:hover,
-  .booking-field-name:hover {
-    background-color: black;
+  .booking-box input {
+    border: 2px solid gray;
+    border-radius: 15px;
+    color: gray;
+  }
+  .gen-box {
+    border: 2px solid rgb(176, 43, 43);
+    margin: 12px;
+    width: 100%;
+    border-radius: 20px;
+    background-image: linear-gradient(rgb(26, 26, 13), red);
+    overflow: hidden;
+  }
+  .auto-gen {
+    background-color: transparent;
+    margin: 0;
+    padding: 5px !important;
+    color: white;
+  }
+  .book-btn {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), black);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background 0.4s ease;
+    cursor: pointer;
+  }
+
+  .book-btn:hover {
+    background: linear-gradient(rgba(50, 50, 50, 0.8), black);
+  }
+  .booking-box input:hover {
+    background-color: #dfdfdf4a;
+    color: black;
+  }
+  #totalPrice {
     color: yellow;
   }
 </style>
@@ -219,17 +250,20 @@
     min="1"
     required
     class="booking-field"
+    placeholder="Enter number of guests"
     oninput="calculatePrice()"
   />
-  <p class="booking-field-name">
-    Duration (Days): <span id="totalDays">0</span>
-  </p>
-  <p class="booking-field-name">
-    Total Price (₹): <span id="totalPrice">0</span>
-  </p>
+  <div class="gen-box">
+    <p class="booking-field-name auto-gen">
+      Duration (Days): <span id="totalDays">0</span>
+    </p>
+    <p class="booking-field-name auto-gen">
+      Total Price (₹): <span id="totalPrice">0</span>
+    </p>
+  </div>
   <input type="hidden" name="totalPrice" id="totalPriceInput" />
 
-  <button type="submit" class="booking-field-name">Book Now</button>
+  <button type="submit" class="booking-field-name book-btn">Book Now</button>
 </form>
 
 <script>

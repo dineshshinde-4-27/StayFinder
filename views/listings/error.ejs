@@ -1,5 +1,38 @@
 <% layout('/layouts/commanPage.ejs') %>
 <div class="error-bg d-flex w-100 h1 justify-content-center align-items-center">
-  <h2 class="error-message"><%= err.message %></h2>
-  <h2 class="status-code"><%= err.status %></h2>
+  <div class="error-box">
+    <h2 class="err-red"><i class="fa-solid fa-triangle-exclamation"></i></h2>
+    <p class="err-text">
+      This page doesn’t exist <br />or may no longer be available.
+    </p>
+    <h2 class="status-code"><%= err.status %></h2>
+    <h2 class="status-code"><%= err.message %></h2>
+  </div>
 </div>
+
+<style>
+  .error-box {
+    background-color: white;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 70%;
+    border-radius: 23px;
+    transform: scale(0.8);
+  }
+  .err-red {
+    color: #ff5c5c !important;
+    font-weight: 900;
+    font-size: 3.3em;
+  }
+  .err-text {
+    font-size: 0.52em;
+    text-align: center;
+  }
+  .status-code {
+    color: gray !important;
+    font-weight: bold;
+  }
+</style>
