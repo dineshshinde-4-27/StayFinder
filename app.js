@@ -31,7 +31,9 @@ async function main(dbUrl) {
 
 main(dbUrl)
   .then(() => {
-    console.log("Connection established with Database");
+    console.log(
+      `Connected to the database.\nVisit http://localhost:3000 to view the app.'`
+    );
   })
   .catch((err) => {
     console.log(err);
